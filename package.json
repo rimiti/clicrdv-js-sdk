@@ -43,7 +43,6 @@
     "gulp-babel": "^6.1.2",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-util": "^3.0.8",
-    "nyc": "^11.0.3",
-    "require-dir": "^0.3.2"
+    "nyc": "^11.0.3"
   }
 }
