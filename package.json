@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/rimiti/clicrdv-js-sdk#readme",
   "dependencies": {
+    "json-override": "^0.2.0",
     "source-map-support": "^0.4.15"
   },
   "devDependencies": {
