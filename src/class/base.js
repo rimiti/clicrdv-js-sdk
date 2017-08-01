@@ -2,16 +2,16 @@ import querystring from 'querystring'
 
 export default class Base {
 
-  filters(filters) {
+  filter(filters) {
     const output = Object.keys(filters)
       .map((key) => [key, filters[key]])
-      .reduce((array, [name, str], index) => {
-        const [, op, value] = /([=<>!]{1,2})?(.*)/.exec(str)
-        array[`conditions[${index}][field]`] = name
-        array[`conditions[${index}][op]`] = op || '='
-        array[`conditions[${index}][value]`] = value
-        return array
-      })
+      .reduce((tmp, [name, str], index) => {
+        const [, op, value] = /([=:<>!]{1,2})?(.*)/.exec(str)
+        tmp[`conditions[${index}][field]`] = name
+        tmp[`conditions[${index}][op]`] = op || '='
+        tmp[`conditions[${index}][value]`] = value
+        return tmp
+      }, {})
     return `${querystring.stringify(output)}`
   }
 
