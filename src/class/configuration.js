@@ -1,4 +1,8 @@
-import {ConfigurationWrongEnvironment, ConfigurationWrongAuthenticationType} from './exceptions'
+import {
+  ConfigurationWrongEnvironment,
+  ConfigurationWrongAuthenticationType,
+  ConfigurationWrongFormat
+} from './exceptions'
 
 export default class Configuration {
 
@@ -26,6 +30,9 @@ export default class Configuration {
   }
 
   set format(value) {
+    if (!['json', 'xml'].includes(value.type)) {
+      throw new ConfigurationWrongFormat(`Only "json" or "xml" format can be set.`)
+    }
     this._format = value
   }
 
