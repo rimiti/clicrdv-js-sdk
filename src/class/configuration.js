@@ -1,3 +1,5 @@
+import {ConfigurationWrongEnvironment, ConfigurationWrongAuthenticationType} from './exceptions'
+
 export default class Configuration {
 
   /**
@@ -13,15 +15,18 @@ export default class Configuration {
   }
 
   set environment(value) {
+    if (!['production', 'sandbox'].includes(value)) {
+      throw new ConfigurationWrongEnvironment(`Only "production" or "sandbox" environment value can be set.`)
+    }
     this._environment = value
   }
 
-  get output() {
-    return this._output
+  get format() {
+    return this._format
   }
 
-  set output(value) {
-    this._output = value
+  set format(value) {
+    this._format = value
   }
 
   get origin() {
@@ -37,6 +42,9 @@ export default class Configuration {
   }
 
   set authentication(value) {
+    if (!['session', 'basic-auth'].includes(value.type)) {
+      throw new ConfigurationWrongAuthenticationType(`Only "session" or "basic-auth" authentication type can be set.`)
+    }
     this._authentication = value
   }
 
@@ -66,7 +74,7 @@ export default class Configuration {
    * @private
    */
   _itemsToHydrate() {
-    return ['environment', 'output', 'origin', 'authentication', 'credentials']
+    return ['environment', 'format', 'origin', 'authentication', 'credentials']
   }
 
 }
