@@ -66,7 +66,7 @@ export default class Configuration {
    * @private
    */
   _itemsToHydrate() {
-    return ['_environment', '_output', '_origin', '_authentication', '_credentials']
+    return ['environment', 'output', 'origin', 'authentication', 'credentials']
   }
 
 }
