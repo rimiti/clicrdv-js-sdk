@@ -2,12 +2,12 @@ import test from 'ava'
 import sdk from '../src/lib'
 
 test('Hydrate configuration', t => {
-  const api = sdk.create()
-  t.is(api.environment, `production`)
-  t.is(api.format, `json`)
-  t.is(api.origin, ``)
-  t.is(api.authentication.type, `session`)
-  t.is(api.credentials.username, ``)
-  t.is(api.credentials.password, ``)
-  t.is(api.credentials.api_key, ``)
+  const instance = sdk.create()
+  t.is(instance.environment, `production`)
+  t.is(instance.format, `json`)
+  t.is(instance.origin, ``)
+  t.is(instance.authentication.type, `session`)
+  t.is(instance.credentials.username, ``)
+  t.is(instance.credentials.password, ``)
+  t.is(instance.credentials.api_key, ``)
 })
