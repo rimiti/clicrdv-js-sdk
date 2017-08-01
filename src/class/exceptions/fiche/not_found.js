@@ -1,4 +1,4 @@
-import Exception from '..'
+import Exception from '../base'
 
 export default class FicheNotFound extends Exception {
 
