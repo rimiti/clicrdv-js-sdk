@@ -1,6 +1,6 @@
 import querystring from 'querystring'
 
-export default (filters) => {
+export default filters => {
   const output = Object.keys(filters)
     .map((key) => [key, filters[key]])
     .reduce((array, [name, str], index) => {
@@ -9,6 +9,6 @@ export default (filters) => {
       array[`conditions[${index}][op]`] = op || '='
       array[`conditions[${index}][value]`] = value
       return array
-    }, {})
+    })
   return `${querystring.stringify(output)}`
 }
