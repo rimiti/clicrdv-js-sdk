@@ -2,7 +2,7 @@ import sdk from '../class'
 
 sdk.configure({
   "environment": "production",
-  "output": "json",
+  "format": "json",
   "origin": "",
   "authentication": {
     "type": "session"
