@@ -28,7 +28,7 @@ export default class Configuration {
   }
 
   set format(value) {
-    if (!['json', 'xml'].includes(value.type)) throw new ConfigurationWrongFormat()
+    if (!['json', 'xml'].includes(value)) throw new ConfigurationWrongFormat()
     this._format = value
   }
 
