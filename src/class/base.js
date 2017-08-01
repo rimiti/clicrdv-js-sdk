@@ -25,4 +25,8 @@ export default class Base extends Configuration {
     return `${querystring.stringify(output)}`
   }
 
+  authenticate() {
+    // TODO: Authenticate with session
+  }
+
 }
