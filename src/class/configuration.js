@@ -19,9 +19,7 @@ export default class Configuration {
   }
 
   set environment(value) {
-    if (!['production', 'sandbox'].includes(value)) {
-      throw new ConfigurationWrongEnvironment(`Only "production" or "sandbox" environment value can be set.`)
-    }
+    if (!['production', 'sandbox'].includes(value)) throw new ConfigurationWrongEnvironment()
     this._environment = value
   }
 
@@ -30,9 +28,7 @@ export default class Configuration {
   }
 
   set format(value) {
-    if (!['json', 'xml'].includes(value.type)) {
-      throw new ConfigurationWrongFormat(`Only "json" or "xml" format can be set.`)
-    }
+    if (!['json', 'xml'].includes(value.type)) throw new ConfigurationWrongFormat()
     this._format = value
   }
 
@@ -49,9 +45,7 @@ export default class Configuration {
   }
 
   set authentication(value) {
-    if (!['session', 'basic-auth'].includes(value.type)) {
-      throw new ConfigurationWrongAuthenticationType(`Only "session" or "basic-auth" authentication type can be set.`)
-    }
+    if (!['session', 'basic-auth'].includes(value.type)) throw new ConfigurationWrongAuthenticationType()
     this._authentication = value
   }
 
