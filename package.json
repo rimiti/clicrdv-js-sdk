@@ -1,23 +1,29 @@
 {
   "name": "clicrdv-js-sdk",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "ClicRDV Javascript SDK",
   "license": "MIT",
-  "main": "dist/lib/sdk.js",
+  "main": "dist/src/index.js",
   "scripts": {
-    "prepare": "gulp",
-    "test": "nyc ava"
+    "clean": "rm -rf coverage dist tmp",
+    "lint": "eslint .",
+    "postlint": "npm run typecheck",
+    "typecheck": "flow check",
+    "pretest": "npm run lint",
+    "test": "npm run test-only",
+    "test-only": "jest --coverage",
+    "test:watch": "jest --watch",
+    "build": "babel src/**/*.js -d dist",
+    "build:watch": "babel --watch src/**/*.js -d dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rimiti/clicrdv-js-sdk.git"
   },
   "keywords": [
-    "node",
     "clicrdv",
     "sdk",
-    "api",
-    "fetch"
+    "api"
   ],
   "author": {
     "name": "Dimitri DO BAIRRO",
@@ -28,29 +34,39 @@
     "url": "https://github.com/rimiti/clicrdv-js-sdk/issues"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=6.9"
   },
+  "engineStrict": true,
   "homepage": "https://github.com/rimiti/clicrdv-js-sdk#readme",
   "dependencies": {
-    "json-override": "^0.2.0",
-    "source-map-support": "^0.4.15"
+    "axios": "^0.16.2"
   },
   "devDependencies": {
-    "ava": "^0.21.0",
-    "babel-preset-es2015": "^6.24.1",
-    "coveralls": "^2.13.1",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-ava": "^0.18.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-util": "^3.0.8",
-    "nyc": "^11.0.3"
+    "axios-mock-adapter": "^1.9.0",
+    "babel-core": "~6.26.0",
+    "babel-eslint": "~8.0.1",
+    "babel-jest": "~21.2.0",
+    "babel-plugin-transform-async-to-generator": "~6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "~6.26.0",
+    "babel-plugin-transform-flow-strip-types": "~6.22.0",
+    "babel-plugin-transform-runtime": "~6.23.0",
+    "babel-preset-stage-3": "~6.24.1",
+    "coveralls": "^3.0.0",
+    "eslint": "~4.8.0",
+    "eslint-config-airbnb-base": "~12.0.2",
+    "eslint-plugin-flowtype": "~2.39.1",
+    "eslint-plugin-import": "~2.7.0",
+    "flow-bin": "~0.56.0",
+    "jest": "~21.2.1"
   },
-  "ava": {
-    "require": [
-      "babel-register"
+  "jest": {
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "js"
     ],
-    "babel": "inherit"
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
   }
 }
